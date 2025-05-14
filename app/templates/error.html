@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Error - Movie Recommendation System{% endblock %}
+
+{% block content %}
+<div class="error-container" style="text-align: center; margin-top: 50px;">
+    <h1>Oops! Something went wrong</h1>
+    <p>{{ error }}</p>
+    <a href="{{ url_for('index') }}" class="btn" style="margin-top: 20px;">Back to Home</a>
+</div>
+{% endblock %} 
