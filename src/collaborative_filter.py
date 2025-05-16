@@ -191,7 +191,16 @@ class CollaborativeFilter:
         
         # Sort recommendations by predicted rating and return top n
         recommendations.sort(key=lambda x: x[1], reverse=True)
-        return [self.reverse_mapping[rec[0]] for rec in recommendations[:n_recommendations]]
+        
+        # Filter recommendations to include only those with valid movie IDs in reverse_mapping
+        valid_recommendations = []
+        for rec in recommendations[:n_recommendations]:
+            if rec[0] in self.reverse_mapping:
+                valid_recommendations.append(self.reverse_mapping[rec[0]])
+            else:
+                logger.warning(f"Movie index {rec[0]} not found in reverse_mapping")
+        
+        return valid_recommendations
     
     def _get_item_based_recommendations(self, user_id, ratings_df, n_recommendations=5):
         """

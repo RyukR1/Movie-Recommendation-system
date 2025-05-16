@@ -14,7 +14,20 @@
             <div class="header-content">
                 <a href="/" class="logo">🎬 Movie Recommender</a>
                 <nav>
-                    <a href="/" class="btn">Home</a>
+                    <a href="/" class="nav-link">Home</a>
+                    <form action="{{ url_for('search_movies') }}" method="GET" class="search-form">
+                        <input type="text" name="query" placeholder="Search movies..." required>
+                        <button type="submit" class="search-btn">🔍</button>
+                    </form>
+                    <div class="auth-nav">
+                        {% if current_user.is_authenticated %}
+                            <a href="{{ url_for('profile') }}" class="nav-link">My Profile</a>
+                            <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
+                        {% else %}
+                            <a href="{{ url_for('login') }}" class="nav-link">Login</a>
+                            <a href="{{ url_for('register') }}" class="nav-link">Sign Up</a>
+                        {% endif %}
+                    </div>
                 </nav>
             </div>
         </div>

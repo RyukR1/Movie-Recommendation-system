@@ -5,7 +5,7 @@ import logging
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import mean_absolute_error, mean_squared_error
-from src.collaborative_filter import CollaborativeFilter
+from collaborative_filter import CollaborativeFilter
 
 # Configure logging
 logging.basicConfig(
